@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search results for {{ q }}</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            {% if type != 'artist' %}
+            <th>Artist</th>
+            {% endif %}
+        </tr>
+        {% for result in results %}
+            <tr>
+                {% if type == 'track' %}
+                    <td> <img src="{{ result['album']['images'][0]['url'] }}" width="180px"> </td>
+                {% else %}
+                    {% if result["images"]|length > 0 %}
+                        <td> <img src="{{ result['images'][0]['url'] }}" width="180px"></td>
+                    {% else %}
+                        <td>No image</td>
+                    {% endif %}
+                {% endif %}
+                <td> <a href="{{ result['external_urls']['spotify'] }}">{{result["name"]}}</a></td>
+                <td>
+                    {% if type != 'playlist' %}
+                        {% for artist in result["artists"] %}
+                            <a href="{{ artist['external_urls']['spotify'] }}"> {{ artist['name'] }}</a>
+                        {% endfor %}
+                    {% else %}
+                            <a href="{{ result['owner']['external_urls']['spotify'] }}">{{ result['owner']['display_name'] }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

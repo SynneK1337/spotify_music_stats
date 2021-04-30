@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Music Stats</title>
+</head>
+<body>
+    <form action="/search" method="GET">
+        <input type="text" name="query" id="query">
+        <select name="type" id="type">
+            <option value="album">Album</option>
+            <option value="artist">Artist</option>
+            <option value="playlist">Playlist</option>
+            <option value="track">Track</option>
+            <option value="show">Show</option>
+            <option value="episode">Episode</option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

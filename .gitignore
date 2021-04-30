@@ -1,2 +1,5 @@
 Pipfile
 Pipfile.lock
+src/spotify_config.py
+.vscode
+.cache
